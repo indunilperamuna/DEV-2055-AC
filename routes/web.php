@@ -15,6 +15,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    return redirect('/providers');
+});
+
+Route::get('/providers', function () {
 
     $user = new stdClass();
     $user->name = 'Indunil';
