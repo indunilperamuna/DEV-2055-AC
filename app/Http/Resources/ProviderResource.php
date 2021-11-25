@@ -19,7 +19,8 @@ class ProviderResource extends JsonResource
                  'company_name' => $this->company_name,
                  'trading_name' => $this->trading_name,
                  'abn' => $this->abn,
-                 'address' => $this->address];
+                 'address' => $this->address,
+                 'status' => $this->status];
 
         return array_merge($data, $this->getContacts($this->contacts));
     }

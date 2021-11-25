@@ -3,6 +3,9 @@
         <Head title="InertiaJS APP - Create Provider" />
         <H1>Edit Provider</H1>
         <div>
+            <Link class="btn btn-sm btn-primary " :href="'/providers'" role="button">Back</Link>
+        </div>
+        <div>
             <form :action="'/providers/' + provider.slug" method="POST" class="my-5" @submit.prevent="updateProvider">
                 <div class="row">
                     <div class="col-md-6">
@@ -25,6 +28,18 @@
                             <label for="address">Address</label>
                             <input type="text" class="form-control" id="address" placeholder="Address" v-model="form.address" v-bind:class="{ error: errors.address }">
                             <LaravelError :field="errors.address" />
+                        </div>
+                        <div class="form-check" style="margin-top: 10px;">
+                            <input class="form-check-input" type="radio" name="status" id="activeRadioCheck" v-model="form.status" value="active"  >
+                            <label class="form-check-label" for="activeRadioCheck">
+                                Active
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="incompleteRadioCheck"  v-model="form.status" value="incomplete">
+                            <label class="form-check-label" for="incompleteRadioCheck">
+                                In Complete
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -96,6 +111,7 @@ export default {
                 trading_name: this.provider.trading_name,
                 abn: this.provider.abn,
                 address: this.provider.address,
+                status: this.provider.status,
                 pc_name: this.provider.pc_name,
                 pc_email: this.provider.pc_email,
                 pc_phone: this.provider.pc_phone,

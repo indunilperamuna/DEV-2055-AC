@@ -17,7 +17,8 @@ class Provider extends Model
                             'trading_name',
                             'company_name',
                             'abn',
-                            'address'];
+                            'address',
+                            'status'];
 
     public function contacts(){
         return $this->hasMany(ProviderContact::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AbnValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProviderRequest extends FormRequest
@@ -26,7 +27,7 @@ class UpdateProviderRequest extends FormRequest
         return [
             'company_name' => 'sometimes|string',
             'trading_name' => 'sometimes|string',
-            'abn' => 'required|unique:providers,abn,'.$this->provider->slug.',slug',
+            'abn' => ['required', 'unique:providers,abn,'.$this->provider->slug.',slug', new AbnValidation()],
             'pc_phone' => 'sometimes|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'sc_phone' => 'sometimes|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ];

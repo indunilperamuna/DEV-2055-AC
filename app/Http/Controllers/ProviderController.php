@@ -55,6 +55,7 @@ class ProviderController extends Controller
         $tradingName = $request->input('trading_name');
         $abn = $request->input('abn');
         $address = $request->input('address');
+        $status = $request->input('status');
 
         $pcContactName = $request->input('pc_name');
         $pcContactEmail = $request->input('pc_email');
@@ -67,7 +68,8 @@ class ProviderController extends Controller
         $provider = Provider::create(['company_name' => $companyName,
                                       'trading_name' => $tradingName,
                                       'abn' => $abn,
-                                      'address' => $address]);
+                                      'address' => $address,
+                                      'status' => $status]);
 
         if(isset($pcContactName)){
             $primaryContact = new ProviderContact(['type' => 'primary',
@@ -126,6 +128,7 @@ class ProviderController extends Controller
         $tradingName = $request->input('trading_name');
         $abn = $request->input('abn');
         $address = $request->input('address');
+        $status = $request->input('status');
 
         $pcContactName = $request->input('pc_name');
         $pcContactEmail = $request->input('pc_email');
@@ -139,6 +142,7 @@ class ProviderController extends Controller
         $provider->trading_name = $tradingName;
         $provider->abn = $abn;
         $provider->address =  $address;
+        $provider->status =  $status;
 
         $provider->save();
 
