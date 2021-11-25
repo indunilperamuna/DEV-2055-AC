@@ -30,6 +30,8 @@ class StoreProviderRequest extends FormRequest
             'abn' => ['required|unique:providers,abn', new AbnValidation],
             'pc_phone' => 'sometimes|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'sc_phone' => 'sometimes|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'pc_email' => 'sometimes|email',
+            'sc_email' => 'sometimes|email'
         ];
     }
 }
