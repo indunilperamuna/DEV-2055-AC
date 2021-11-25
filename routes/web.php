@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +18,6 @@ Route::get('/', function () {
     return redirect('/providers');
 });
 
-Route::get('/providers', function () {
-
-    $user = new stdClass();
-    $user->name = 'Indunil';
-
-    return inertia('Welcome', ['user' => $user]);
-});
+Route::resource('providers', ProviderController::class)->parameters([
+    'providers' => 'provider:slug'
+]);

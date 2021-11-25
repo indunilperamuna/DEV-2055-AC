@@ -25,6 +25,7 @@
 import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
+    inject: ['page'],
     components: {
         Link,
     }

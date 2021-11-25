@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Inertia::share('app.name', config('app.name'));
+        Inertia::share('errors', function (){
+            return session()->get('errors') ? session()->get('errors')->getBag('default')->getMessages() : (object) [];
+        });
+        Inertia::share('successMessage', function (){
+            return session()->get('successMessage') ? session()->get('successMessage') : null;
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        JsonResource::withoutWrapping();
     }
 }
